@@ -1,0 +1,276 @@
+% 12pt and ISO A4 paper with title page add notitlepage for otherwise
+\documentclass[a4paper, 12pt, titlepage]{article}
+
+% Margins and page size
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=3.3cm,right=2.2cm]{geometry}
+
+% Page headers are set to top right
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\footrulewidth}{0pt} % clear rulers
+\renewcommand{\headrulewidth}{0pt}
+\lhead{} % Empty left header
+\rhead{\thepage} % Page number at the right header
+\cfoot{} % Clear center of the footer
+
+% Use American English for dates etc.
+%\usepackage[american]{babel}
+% If document is in Turkish then use
+% \usepackage[turkish]{babel}
+% or for both
+\usepackage[turkish,shorthands=off,american]{babel}
+
+% Indent at section beginnings
+%\usepackage{indentfirst}
+
+% utf-8 support
+\usepackage[utf8]{inputenc}
+
+
+% Figure placement
+\usepackage{float}
+
+% An enumeration package for flexible enumeration
+\usepackage{enumitem}
+
+% Helvetica Sans-serif fonts
+\usepackage{helvet}
+\usepackage{sectsty}
+\allsectionsfont{\normalfont\sffamily\bfseries}
+\sectionfont{\fontsize{18pt}{21.6pt}\sffamily\bfseries}
+\subsectionfont{\fontsize{16pt}{19.2pt}\sffamily\bfseries}
+\subsubsectionfont{\fontsize{14pt}{16.8pt}\sffamily\bfseries}
+
+% Paragraph spacings
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{12pt}
+
+% Courier monospace font
+\usepackage{courier}
+
+% Table of contents dot fill
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\tocloftpagestyle{fancy}
+\renewcommand{\cfttoctitlefont}{\sffamily\Large\bfseries}
+\setlength{\cftbeforesecskip}{6pt}
+
+% Links, both local and external
+\usepackage{hyperref}
+\hypersetup{
+    unicode=true,
+    colorlinks=true,
+    urlcolor=blue,
+    citecolor=black,
+    menucolor=black,
+    linkcolor=black
+}
+
+% Figure captions are bold
+\usepackage[labelfont=bf,font=sf]{caption}
+
+
+% Pseudocode from algorithmicx package
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage[section,boxed]{algorithm}
+\captionsetup[algorithm]{labelfont=bf,font=sf,justification=centering,position=top}
+
+% For fitting tables into the page width
+\usepackage{makecell}
+\renewcommand{\theadalign}{cc} % Centering and at the middle
+\renewcommand{\theadfont}{\bfseries} % Bold table headers
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+% Listings for implemented code
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,frame=lines,tabsize=4}
+\renewcommand{\lstlistingname}{Listing}
+\lstset{
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    escapeinside={\%*}{*)},
+    frame=single,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    xleftmargin=8pt,
+}
+
+% A powerful math notation package
+\usepackage{amsmath}
+
+% Override here with the names
+\newcommand{\thetitle}{Project Title}
+\newcommand{\theturkishtitle}{Proje Başlığı}
+\newcommand{\theauthor}{YOUR NAME}
+\newcommand{\thedate}{MONTH- YEAR}
+\newcommand{\theturkishdate}{MONTH- YEAR}
+
+\usepackage{color}
+\definecolor{darkgreen}{RGB}{0, 128, ,0}
+\newcommand{\fixme}[1]{{\color{red}\bfseries\sffamily (FIXME: #1)}}
+\newcommand{\suggest}[1]{{\color{darkgreen}\bfseries\sffamily (SUGGESTION: #1)}}
+\newcommand{\ask}[1]{{\color{blue}\bfseries\sffamily (QUESTION: #1)}}
+
+\newcommand\Includegraphics{\expandafter\includegraphics\expandafter}
+
+% Title, author and date info
+\title{\thetitle}
+\author{\theauthor}
+\date{\thedate}
+
+% Graphics for PDFTeX
+\usepackage{graphicx}
+
+
+\begin{document}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\numberwithin{lstlisting}{section}
+\shorthandoff{=}
+
+
+\begin{titlepage}
+    \bfseries % Make all text bold in this environment
+    \sffamily % Similarly select sans-serif font
+    \begin{center}
+        \LARGE{\textbf{ISTANBUL TECHNICAL UNIVERSITY \\
+               FACULTY OF COMPUTER AND INFORMATICS} } \\
+        \vspace{5.5cm}
+        \LARGE{\thetitle}  \\
+        \vspace{4.5cm}
+        \Large{Graduation Project} \\
+        \vspace{0.5cm}
+        \Large{\theauthor} \\
+        \Large{150120047} \\
+        \vspace{4cm}
+        \large{Department: Computer Engineering} \\
+        \large{Division: Computer Engineering} \\
+        \vspace{1.5cm}
+        \large{Advisor} \\
+        \vspace{\fill} % Fill out until the page end
+        \large{\normalfont \sffamily \thedate}
+    \end{center}
+\end{titlepage}
+
+\pagenumbering{Roman} % Capital roman numerals as page numbers
+\newpage
+\section*{Statement of Authenticity}
+
+I hereby declare that in this study
+
+\begin{enumerate}
+    \item all the content influenced from external references are cited clearly and in detail,
+    \item and all the remaining sections, especially the theoretical studies and implemented software/hardware that constitute the fundamental essence of this study is originated by my/our individual authenticity.
+\end{enumerate}
+\vspace{1em}
+İstanbul, \theturkishdate
+\vspace{3em}\\ \theauthor
+
+\newpage
+\section*{Acknowledgments}
+
+\newpage
+\section*{\centering\thetitle}
+\centerline{\fontsize{16pt}{21.6pt}\sffamily\bfseries (SUMMARY)}
+
+English summary should be at least one full page and should not be longer than 2 pages,.
+
+Summary should be styled with “normal” style.
+
+
+\newpage
+\section*{\centering\theturkishtitle}
+\centerline{\fontsize{16pt}{21.6pt}\sffamily\bfseries (ÖZET)}
+
+
+Turkish summary should be at least one full page and should not be longer than 2 pages,.
+
+Summary should be styled with “normal” style.
+
+
+\newpage
+\tableofcontents
+\newpage
+
+% For the ones who doesn't know: 1,2,..9 called West Arabic numbers
+\pagenumbering{arabic}
+\section{Introduction}
+
+This section introduces the term project by summarizing the main characteristics of the system to be implemented. Student may include very rough technical details but rather the main problem and how the designed system is planned to remedy the problem is to be defined in this section. This section is expected not to exceed two or three pages.
+
+\newpage
+\section{Literature Survey}
+
+In this section you should state all the related work present in the academic literature. For each study, you should compare how your preliminary design compares conceptually with the literature work. You should heavily use citations during your survey. An example is provided below:
+
+In November 1936 Alan Turing published his groundbreaking paper which creates foundations of computer science [1]. It was the Big-Bang of the computer science that created a new universe from dusty works of his ancestors.
+
+A good website to search for academic references is google scholar. You should be able to access the papers that you've searched if you use an ITU IP address.
+
+In this section you should briefly summarize the technical contributions in an itemized manner. Your contributions are the novel aspects of your project: what are you implementing in your project that is
+
+\newpage
+\section{Novel Aspects and Technological Contributions}
+
+\begin{itemize}
+    \item 	not present in the literature or
+    \item not implemented as you will implement or
+    \item not performing as good as your final implementation does
+
+\end{itemize}
+
+\newpage
+\section{System Requirements}
+In this section you should enlist functional and non functional requirements of the system . Main features of the project shall be listed here. Functional requirements should be listed in the following subsection.
+
+\subsection{Use Cases / User Stories}
+You should present functional requirements using either use case format or user story format. Your functional requirements are the type of users and how they will use your final product.
+
+\newpage
+\section{Project Plan}
+Project plan section should contain the following subsections.
+\subsection{Project Resources}
+What kind of software and hardware resources you will need. This includes development laptops, development environment, simulators, etc..
+\subsection{Work Breakdown and Work Assignment}
+If a team project is your case a brief effort estimation can be useful. Even for individual project you should present a Work Breakdown Structure where you enlist main tasks (can be linked with the features enlisted in Section 4) and subtasks that build the main task in a tree format. An additional PERT chart and critical path analysis shall be good. If a team project is your case you should present which tasks in your work breakdown structure is assigned to each member of your team. If you are an individual obviously you don't need work assignment.
+\begin{figure}[H]
+    \centering
+    \includegraphics{wbs.PNG}
+    \caption{The Work Breakdown Structure of the project}
+    \label{fig:wbs}
+\end{figure}
+
+\subsection{Time Plan}
+
+Present a GANTT diagram based on the tasks in the subsection. You don't need to be very detailed, just the main tasks and an additional level of subtasks shall be fine.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.70]{gan_chart.PNG}
+    \caption{Gantt chart for the project tasks}
+    \label{fig:gantt}
+\end{figure}
+
+
+
+\newpage
+\section{Goals and Evaluation Criteria}
+
+In this section you should enlist your goals at the end of your project, do you plan to implement a whole system or improve just a part, will you be implementing an algorithm, software, software/hardware system, hardware design?
+Afterwards you should enlist roughly the criteria which you will be evaluating the system at the end of the project. Briefly you should give numerical values for the most important non-functional aspects of your project. For instance
+1.	System throughput should not be less than 1000 operations per second
+2.	Latency should be improved at least 10\% compared to xyz technique
+3.	10-fold cross validation on abc dataset shuld provide 0.95 precision and 0.8 recall
+
+At the end of the project even though your performance as a student will not be evaluated based on your how well you meet the targets listed in this section you are expected to examine in your final report your system's performance based on the numbers you list above.
+
+
+\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{references.bib}
+
+\end{document}
